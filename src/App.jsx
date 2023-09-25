@@ -4,7 +4,7 @@ function App() {
 
   return (
     <>
-      <h2 className="bg-black text-white">Well come bangladesh</h2>
+      <h2 className="bg-black text-white"></h2>
     </>
   )
 }
