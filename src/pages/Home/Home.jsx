@@ -6,7 +6,7 @@ const Home = () => {
     return (
         <div>
             <Hero></Hero>
-            <Sales endpoint={popularsales}></Sales>
+            <Sales endpoint={popularsales} ifExists></Sales>
             <Sales endpoint={toprateslaes}></Sales>
         </div>
     );
