@@ -52,6 +52,7 @@ const heroapi = {
 };
 
 const popularsales = {
+  
   title: "Popular Sales",
   items: [
     {
@@ -373,6 +374,8 @@ const footerAPI = {
     ],
   ]
 };
+
+
 
 
 export { heroapi, footerAPI, story, sneaker, highlight, toprateslaes, popularsales };
