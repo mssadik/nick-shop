@@ -68,7 +68,7 @@ const popularsales = {
     },
     {
       id: "0p0x2",
-      title: "Nike Martine Rose",
+      title: "Nike Martine Rose 3.3",
       text: "MEN Running Shoes",
       rating: "4.5",
       btn: "Buy Now",
