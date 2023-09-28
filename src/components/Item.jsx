@@ -1,7 +1,7 @@
 import { StarIcon, ShoppingBagIcon } from "@heroicons/react/24/solid"
 const Item = ({ item, ifExists }) => {
     const { id, color, shadow, title, text, img, btn, rating, price } = item;
-    console.log(item);
+    // console.log(item);
 
     return (
         <div className={`relative bg-gradient-to-b ${color} ${shadow} grid items-center rounded-xl py-4 px-5 transition-all duration-700 ${ifExists ? 'grid-cols-2  gap-10 ' : 'justify-items-center'}`}>
