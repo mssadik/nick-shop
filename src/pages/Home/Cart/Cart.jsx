@@ -1,12 +1,21 @@
+import { useDispatch, useSelector } from "react-redux";
+import { setCloseCart } from "../../../redux/CartSlice";
 import CartCount from "./CartCount";
 import CartEmpty from "./CartEmpty";
 import CartItem from "./CartItem";
 
 const Cart = () => {
+    const dispatch = useDispatch();
+    const isTrue = useSelector((state) => state.cartSlice.cart);
+   
+
+    const onCartToggle = () => {
+        dispatch(setCloseCart(false))
+    }
     return (
-        <div className={`fixed top-0 left-0 ring-0 bottom-0 blur-effect-theme w-full h-screen opacity-100 z-[250]`}>
+        <div className={`${isTrue ? 'opacity-100 visible translate-x-0' : 'opacity-0 invisible translate-x-0'} fixed top-0 left-0 ring-0 bottom-0 blur-effect-theme w-full h-screen opacity-100 z-[250]`}>
             <div className={`blur-effect-theme h-screen max-w-xl w-full absolute right-0`}>
-                <CartCount></CartCount>
+                <CartCount onCartToggle={onCartToggle}></CartCount>
                 <CartEmpty></CartEmpty>
                 <CartItem></CartItem>
             </div>
