@@ -1,7 +1,20 @@
 import { StarIcon, ShoppingBagIcon } from "@heroicons/react/24/solid"
+import { useDispatch } from "react-redux";
+import { setItemToCart } from "../redux/CartSlice";
+// import { useSetAddToCartMutation } from "../redux/Api/Api";
 const Item = ({ item, ifExists }) => {
     const { id, color, shadow, title, text, img, btn, rating, price } = item;
-    // console.log(item);
+
+    // const [setAddToCart] = useSetAddToCartMutation();
+    const dispatch = useDispatch();
+    const handelSetAddToCart = async (id) => {
+        const item = { id, color, shadow, title, text, img, btn, rating, price }
+
+        dispatch(setItemToCart({id, item}));
+      }
+
+
+
 
     return (
         <div className={`relative bg-gradient-to-b ${color} ${shadow} grid items-center rounded-xl py-4 px-5 transition-all duration-700 ${ifExists ? 'grid-cols-2  gap-10 ' : 'justify-items-center'}`}>
@@ -16,7 +29,13 @@ const Item = ({ item, ifExists }) => {
                         <div className="flex items-center gap-1"><StarIcon className="icon-style w-5 h-5 md:w-4 md:h-4"></StarIcon> <h1 className="md:text-sm font-normal text-slate-100">{rating}</h1> </div>
                     </div>
                     <div className="flex items-center gap-3 z-0 opacity-95">
-                        <button className="bg-white blur-effect-theme button-theme p-0.5 shadow shadow-sky-200"><ShoppingBagIcon className="icon-style text-slate-900"></ShoppingBagIcon></button>
+                        <button
+                            onClick={() =>handelSetAddToCart(id)}
+                            className="bg-white blur-effect-theme button-theme p-0.5 shadow shadow-sky-200"
+                            aria-label={`Add ${title} to cart`}
+                        >
+                            <ShoppingBagIcon className="icon-style text-slate-900" />
+                        </button>
                         <button className={`bg-white blur-effect-theme button-theme py-1 text-sm text-black font-medium shadow shadow-sky-200 ${ifExists ? '' : ''}`}>{btn}</button>
                     </div>
                 </div>
