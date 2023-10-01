@@ -3,6 +3,7 @@ import logo from '../assets/logo.png'
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setOpenCart } from '../redux/CartSlice';
+import { Link } from 'react-router-dom';
 const Header = () => {
     const [navState, setNavState] = useState(false);
     const dispatch = useDispatch();
@@ -31,11 +32,11 @@ const Header = () => {
         <header className={!navState ? 'absolute top-7 left-0 right-0 opacity-200 z-50' : 'fixed top-0 left-0 ring-0 h-[8vh] w-full flex items-center justify-center opacity-100 z-50 blur-effect-theme '}>
             <nav className='flex items-center justify-between nike-container'>
                 <div className='flex items-center'>
-                    <img className={`w-16 h-auto ${navState && 'filter brightness-0'}`} src={logo} alt="" />
+                    <Link to="/"><img className={`w-16 h-auto ${navState && 'filter brightness-0'}`} src={logo} alt="" /></Link>
                 </div>
                 <ul className='flex items-center justify-center gap-2'>
-                    <li className={` font-semibold ${navState ? 'text-black' : 'grid items-center cursor-pointer text-white'}`}>Login</li>
-                    <li className={` font-semibold ${navState ? 'text-black' : 'grid items-center cursor-pointer text-white'}`}>Retister</li>
+                    <li className={` font-semibold ${navState ? 'text-black' : 'grid items-center cursor-pointer text-white'}`}><Link to="/login">Login</Link></li>
+                    <li className={` font-semibold ${navState ? 'text-black' : 'grid items-center cursor-pointer text-white'}`}><Link to="/register">Retister</Link></li>
 
                     <li className='grid items-center'>
                         <MagnifyingGlassCircleIcon className={`icon-style ${navState && 'text-black'}`}></MagnifyingGlassCircleIcon>

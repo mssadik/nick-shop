@@ -1,6 +1,7 @@
 import { ChevronDoubleLeftIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import { useDispatch, useSelector } from "react-redux";
 import { setAllItemRemove, setGetTotals } from "../../../redux/CartSlice";
+import { useEffect } from "react";
 
 const CartCount = ({onCartToggle}) => {
 
@@ -12,7 +13,10 @@ const CartCount = ({onCartToggle}) => {
     const totalItem = useSelector((state) => state.cartSlice.cartTotalQuantity);
     // console.log(totalItem);
    
-    dispatch(setGetTotals());
+    useEffect(() =>{
+        dispatch(setGetTotals());
+
+    },[])
     return (
         <div className="bg-white h-11 flex items-center justify-between px-3 sticky top-0 left-0 w-full">
             <div className="flex justify-between gap-3">
