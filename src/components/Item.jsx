@@ -1,6 +1,6 @@
 import { StarIcon, ShoppingBagIcon } from "@heroicons/react/24/solid"
 import { useDispatch } from "react-redux";
-import { setItemToCart } from "../redux/CartSlice";
+import { setItemToCart, setOpenCart } from "../redux/CartSlice";
 // import { useSetAddToCartMutation } from "../redux/Api/Api";
 const Item = ({ item, ifExists }) => {
     const { id, color, shadow, title, text, img, btn, rating, price } = item;
@@ -12,6 +12,14 @@ const Item = ({ item, ifExists }) => {
 
         dispatch(setItemToCart({id, item}));
       }
+    const handelSetAddToCartt = async (id) => {
+        const item = { id, color, shadow, title, text, img, btn, rating, price }
+
+        dispatch(setItemToCart({id, item}));
+        dispatch(setOpenCart(true))
+      }
+
+      
 
 
 
@@ -36,7 +44,7 @@ const Item = ({ item, ifExists }) => {
                         >
                             <ShoppingBagIcon className="icon-style text-slate-900" />
                         </button>
-                        <button className={`bg-white blur-effect-theme button-theme py-1 text-sm text-black font-medium shadow shadow-sky-200 ${ifExists ? '' : ''}`}>{btn}</button>
+                        <button onClick={() => handelSetAddToCartt(id)} className={`bg-white blur-effect-theme button-theme py-1 text-sm text-black font-medium shadow shadow-sky-200 ${ifExists ? '' : ''}`}>{btn}</button>
                     </div>
                 </div>
             </div>

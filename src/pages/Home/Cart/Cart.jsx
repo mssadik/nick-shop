@@ -8,6 +8,7 @@ const Cart = () => {
     const dispatch = useDispatch();
     const isTrue = useSelector((state) => state.cartSlice.cart);
     const cartItems = useSelector((state) => state.cartSlice.cartItems)
+    const subTotal = useSelector((state) => state.cartSlice.cartTotalPrice);
     // console.log(cartItems);
 
 
@@ -31,7 +32,7 @@ const Cart = () => {
                             <div className="fixed bottom-0 bg-white w-full px-5 py-3 space-y-2 grid items-center">
                                 <div className="flex items-center justify-between">
                                     <h1 className="text-base font-semibold uppercase">Sub Total</h1>
-                                    <h1 className="text-sm rounded bg-theme-cart text-slate-100 px-1 py-0.5">00</h1>
+                                    <h1 className="text-sm rounded bg-theme-cart text-slate-100 px-1 py-0.5">${subTotal}</h1>
                                 </div>
                                 <div className="gird w-full items-center gap-2 space-y-3">
                                     <p className="text-sm font-medium to-current">Texes and shipping will calculate at shipping</p>

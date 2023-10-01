@@ -1,11 +1,12 @@
 import { HeartIcon, MagnifyingGlassCircleIcon, ShoppingBagIcon } from '@heroicons/react/24/solid'
 import logo from '../assets/logo.png'
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setOpenCart } from '../redux/CartSlice';
 const Header = () => {
     const [navState, setNavState] = useState(false);
     const dispatch = useDispatch();
+    const cartItems = useSelector((state) => state.cartSlice.cartTotalQuantity)
 
     const onCartToggle = () =>{
         dispatch(setOpenCart(true))
@@ -44,7 +45,7 @@ const Header = () => {
                     </li>
                     <li onClick={onCartToggle} className='grid items-center cursor-pointer'>
                         <button  className='border-none outline-none active:scale-110 translate-all duration-300 relative '><ShoppingBagIcon className={`icon-style ${navState && 'text-black'}`}></ShoppingBagIcon></button>
-                        <div className={` ${navState ? 'bg-slate-900 text-slate-100 shadow-slate-900 ' : 'bg-slate-100 text-slate-900'} absolute top-4 ring-0 bg-white text-slate-900 shadow shadow-slate-900 w-4 h-4 font-bold text-[0.65rem] leading-tight  rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition-all duration-300`}>0</div>
+                        <div className={` ${navState ? 'bg-slate-900 text-black shadow-slate-900 ' : 'bg-slate-100 text-slate-900'} absolute top-4 ring-0 bg-white text-slate-900 shadow shadow-slate-900 w-4 h-4 font-bold text-[0.65rem] leading-tight  rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition-all duration-300`}>{cartItems}</div>
                     </li>
                 </ul>
             </nav>
