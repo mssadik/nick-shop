@@ -1,18 +1,23 @@
 
 import { useForm, Controller } from 'react-hook-form';
 import bg from '../../assets/nike-bg.jpg'
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { createUser } from '../../redux/UserSlice';
 
 const Register = () => {
     const { control, handleSubmit, formState: { errors } } = useForm();
+    const dispatch = useDispatch();
 
     const onSubmit = (data) => {
-        // Handle form submission here
+        const {email, password, first_name} = data;
+        dispatch(createUser({email, password, first_name}))
         console.log(data);
     };
 
     return (
-        <div style={{ backgroundImage: `url(${bg})` }} className="min-h-screen flex items-center  bg-white p-1 dark:border-neutral-700 dark:bg-neutral-800 justify-center object-fill py-12 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-md w-full space-y-8 bg-opacity-75  rounded-lg p-6">
+        <div style={{ backgroundImage: `url(${bg})`, filter: 'brightness(75%)' }} className="min-h-screen flex items-center bg-white p-1 dark:border-neutral-700 dark:bg-neutral-800 justify-center bg-center object-fill py-12 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-md w-full space-y-8 bg-opacity-70 bg-slate-800  rounded-lg p-6">
                 <div>
                     <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-200">Register Now</h2>
                 </div>
@@ -20,9 +25,9 @@ const Register = () => {
                     <div className="rounded-md shadow-sm space-y-3">
                         <div className='w-full flex gap-4'>
                             <div className='w-1/2'>
-                                <label htmlFor="first-name" className="sr-only">First Name</label>
+                                <label htmlFor="first_name" className="sr-only">First Name</label>
                                 <Controller
-                                    name="first-name"
+                                    name="first_name"
                                     control={control}
                                     defaultValue="" // Add a defaultValue here
                                     render={({ field }) => (
@@ -116,10 +121,11 @@ const Register = () => {
                         <button
                             className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-gradient-to-r from-indigo-400 via-indigo-500 to-indigo-600 hover:from-indigo-500 hover:via-indigo-600 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-transform transform hover:scale-105"
                         >
-                            Click Me
+                            Register
                         </button>
 
                     </div>
+                    <p className='text-slate-300 font-thin text-xs mt-3 '>Already have an account <Link className='text-blue-600 underline cursor-pointer font-bold' to="/login">Login Now</Link></p>
                 </form>
             </div>
         </div>

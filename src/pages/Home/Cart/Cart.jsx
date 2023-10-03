@@ -3,6 +3,7 @@ import { setCloseCart } from "../../../redux/CartSlice";
 import CartCount from "./CartCount";
 import CartEmpty from "./CartEmpty";
 import CartItem from "./CartItem";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
     const dispatch = useDispatch();
@@ -10,6 +11,8 @@ const Cart = () => {
     const cartItems = useSelector((state) => state.cartSlice.cartItems)
     const subTotal = useSelector((state) => state.cartSlice.cartTotalPrice);
     // console.log(cartItems);
+
+    
 
 
 
@@ -36,7 +39,7 @@ const Cart = () => {
                                 </div>
                                 <div className="gird w-full items-center gap-2 space-y-3">
                                     <p className="text-sm font-medium to-current">Texes and shipping will calculate at shipping</p>
-                                    <button className="button-theme w-full bg-theme-cart text-white">Check Out</button>
+                                    <Link to="/checkOut"><button className="button-theme w-full bg-theme-cart text-white">Check Out</button></Link>
                                 </div>
                             </div>
                         </div>

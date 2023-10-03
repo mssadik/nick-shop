@@ -9,6 +9,7 @@ import store from './redux/store';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import CheckOut from './pages/CheckOut/CheckOut';
+import PrivateRoute from './routs/PrivateRoute';
 
 
 const router = createBrowserRouter([
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/checkOut",
-        element: <CheckOut></CheckOut>
+        element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>
       }
     ]
 
